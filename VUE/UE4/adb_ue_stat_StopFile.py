@@ -18,4 +18,4 @@ devices = get_devices()
 
 for device in devices:
     print(device)
-    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'stat StartFile'")
+    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'stat StopFile'")
