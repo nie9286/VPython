@@ -19,6 +19,6 @@ active = getFocusedPackageAndActivity()
 
 a = active.split("/")
 
-os.system("adb shell dumpsys meminfo -d " + a[0])
+os.system("adb shell dumpsys gfxinfo " + a[0])
 
 
