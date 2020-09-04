@@ -1,1 +1,2 @@
 Hello ADB
+adb shell "ps | grep com.tencent.tmgp.pubgmhd"
