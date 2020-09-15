@@ -26,7 +26,7 @@ for device in devices:
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.MaterialQualityLevel 1'")
     #shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.ForceLOD -1'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.Streaming.MipBias 2'")
-    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.Mobile.SceneColorFormat 2'")
+    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.Mobile.SceneColorFormat 1'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.BloomQuality 2'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.DetailMode 2'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.MobileContentScaleFactor 1'")
