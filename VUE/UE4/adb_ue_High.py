@@ -17,6 +17,7 @@ def shellcmd(device_id,command):
 devices = get_devices()
 for device in devices:
     print(device)
+    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.MobileHDR 1'")
     #shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.LightFunctionQuality 1'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.ShadowQuality 2'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'foliage.MinimumScreenSize 0.02'")
@@ -27,7 +28,7 @@ for device in devices:
     #shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.ForceLOD -1'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.Streaming.MipBias 2'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.Mobile.SceneColorFormat 1'")
-    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.BloomQuality 2'")
+    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.BloomQuality 1'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.DetailMode 2'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.MobileContentScaleFactor 1'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.SkeletalMeshLODBias 0'")
