@@ -1,0 +1,1 @@
+start CsvTools\CSVToSVG.exe -csvDir CSV -o Triangles.svg -stats RHI/PrimitivesDrawn

@@ -12,6 +12,6 @@ def getFocusedPackageAndActivity():
         out = os.popen("adb shell dumpsys window windows | findstr \/ | findstr name=").read() #window下使用findstr
         list = pattern.findall(out)
         component = list[0] #输出列表中的第一条字符串
- 
         return component
+
 print(getFocusedPackageAndActivity())

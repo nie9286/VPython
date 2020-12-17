@@ -1,10 +1,12 @@
 import os
 import re
 
-
+scirptPath = os.path.dirname(os.path.realpath(__file__))
 packageName = "/SolarLand"
-device_file = '/sdcard/UE4Game' +packageName + packageName +'/Saved/Profiling/MemReports'
-copyToDir = ""
+device_file = '/sdcard/UE4Game' +packageName + packageName +'/Saved/Profiling/CSV'
+copyToDir = scirptPath
+
+
 
 
 def get_devices():
