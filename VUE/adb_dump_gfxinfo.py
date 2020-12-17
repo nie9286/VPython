@@ -22,3 +22,4 @@ a = active.split("/")
 os.system("adb shell dumpsys gfxinfo " + a[0])
 
 
+

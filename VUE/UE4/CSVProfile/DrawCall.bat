@@ -1,0 +1,1 @@
+start CsvTools\CSVToSVG.exe -csvDir CSV -o drawcall.svg -stats RHI/DrawCalls
