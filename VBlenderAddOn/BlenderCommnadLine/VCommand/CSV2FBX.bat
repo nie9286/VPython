@@ -1,0 +1,1 @@
+start ../blender.exe -b --python Test.py --debug
