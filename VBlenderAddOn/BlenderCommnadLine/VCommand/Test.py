@@ -19,7 +19,8 @@ lines = file.readlines()
 
 
 verticesDic={}
-uvDic={}
+#uvDic={}
+uvss=[]
 faces = []
 uv_co = []
 
@@ -36,17 +37,22 @@ while i < length:
     tokens2 = line2.split(',')
 
     faces.append([int(tokens0[1]),int(tokens1[1]),int(tokens2[1])])
+
+    uvss.append([float(tokens0[9]),float(tokens0[10])])
+    uvss.append([float(tokens1[9]),float(tokens1[10])])
+    uvss.append([float(tokens2[9]),float(tokens2[10])])
+
     verticesDic[tokens0[1]]=[float(tokens0[2]),float(tokens0[3]),float(tokens0[4])]
     verticesDic[tokens1[1]]=[float(tokens1[2]),float(tokens1[3]),float(tokens1[4])]
     verticesDic[tokens2[1]]=[float(tokens2[2]),float(tokens2[3]),float(tokens2[4])]
-    uvDic[tokens0[1]]=[float(tokens0[9]),float(tokens0[10])]
-    uvDic[tokens1[1]]=[float(tokens1[9]),float(tokens1[10])]
-    uvDic[tokens2[1]]=[float(tokens2[9]),float(tokens2[10])]
+    #uvDic[tokens0[1]]=[float(tokens0[9]),float(tokens0[10])]
+    #uvDic[tokens1[1]]=[float(tokens1[9]),float(tokens1[10])]
+    #uvDic[tokens2[1]]=[float(tokens2[9]),float(tokens2[10])]
     i+=3
     
 
 vertices=list(verticesDic.values())
-uvs=list(uvDic.values())
+
 
 #=======================================================================================
 
@@ -54,14 +60,22 @@ mesh = bpy.data.meshes.new("myBeautifulMesh")  # add the new mesh
 mesh.from_pydata(vertices, [], faces)
 
 
-# mesh.uv_textures.new("spiral")
-# bm = bmesh.new()
-# bm.from_mesh(mesh)
+mesh.uv_layers.new(name='NewUVMap')
 
-# uv_layer = bm.loops.layers.uv[0]
-# nFaces = len(bm.faces)
-# for fi in range(nFaces):
-#      bm.faces[fi].loops[0][uv_layer].uv = uvs
+bm = bmesh.new()
+bm.from_mesh(mesh)
+uv_layer = bm.loops.layers.uv[0]
+
+loopIndex = 0
+for face in bm.faces:
+    for loop in face.loops:                     #一个三角面 = face; 每个face 有一个loops; 每个loops 有三个loop，每一个loop 对应一个vertex Index
+        loop[uv_layer].uv = uvss[loopIndex]
+        print(loopIndex)
+        loopIndex +=1
+
+bm.to_mesh(mesh)
+
+#======================================================================================
 
 
 
