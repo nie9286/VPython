@@ -7,7 +7,7 @@ local_ip = socket.gethostbyname(hostname)
 
 print(local_ip)
 
-command = "-tracehost=" + local_ip +  " -statnamedevents -trace=cpu,gpu,frame,log,bookmark"
+command = "-tracehost=" + local_ip +  " -statnamedevents -trace=cpu,gpu,frame"
 
 
 filename = "UE4CommandLine.txt"

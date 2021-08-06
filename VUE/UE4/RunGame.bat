@@ -1,0 +1,1 @@
+"S:\git\UE4\Engine\Binaries\Win64\UE4Game.exe" "S:\git\FrontendX_UE4\Solarland.uproject" -statnamedevents -trace=cpu,gpu,frame,log,bookmark

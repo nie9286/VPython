@@ -1,0 +1,1 @@
+S:/Singularity_dev-programmer/Frontend/Engine/Binaries/Win64/UnrealPak.exe S:\Singularity_dev-programmer\Frontend\Games\Solarland\Saved\StagedBuilds\Android_ETC2\Solarland\Content\Paks\pakchunk0-Android_ETC2.pak -extract S:\UnpackedPAK\PointLight -encrypt -cryptokeys=F:\GitProject\VPython\VUE\UE4\Bat\Crypto.json

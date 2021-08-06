@@ -2,7 +2,7 @@ import os
 import re
 
 
-packageName = "/SolarLand"
+packageName = "/Solarland"
 device_file = '/sdcard/UE4Game' +packageName + packageName +'/Saved/Profiling/MemReports'
 copyToDir = ""
 

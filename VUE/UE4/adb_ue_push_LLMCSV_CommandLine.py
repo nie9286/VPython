@@ -10,7 +10,7 @@ f = open(filename,"w")
 f.write(command)
 f.close()
 
-packageName = "/Solarland"
+packageName = "/VTest"
 device_file = '/sdcard/UE4Game' +packageName + "/"+ filename
 
 

@@ -1,0 +1,1 @@
+S:\UE4_SourceBuild-4.25.3-101\Engine\Binaries\Win64\UnrealPak.exe S:\Builds\Extract\SHIPPING\Android_ETC2\Solarland-Android_ETC2.pak -extract S:\Builds\Extract\SHIPPING\Android_ETC2 -encrypt -cryptokeys=S:\Builds\Extract\Crypto.json

@@ -28,13 +28,13 @@ for device in devices:
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.Mobile.SceneColorFormat 3'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.BloomQuality 0'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.DetailMode 0'")
-    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.MobileContentScaleFactor 0.66'")
+    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.MobileContentScaleFactor 0'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.SkeletalMeshLODBias 2'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.StaticMeshLODDistanceScale 3'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.LLSDirectionalScattering 0'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.Mobile.AllowDitheredLODTransition 0'")
     shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.DeviceFPSMin 20'")
-    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.DeviceFPSMax 25'")
+    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.DeviceFPSMax 45'")
     
 
 
