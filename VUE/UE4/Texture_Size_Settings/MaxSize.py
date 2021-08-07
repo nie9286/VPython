@@ -4,12 +4,12 @@ class TextureSettings:
     def __init__(self):
         self.tag = "_tag"
         self.EnumRemap = "_EnumRemap"
-        self.pack = 0
-        self.highEnd = 0
-        self.high = 0
-        self.mid = 0
-        self.low = 0
-        self.lowEnd = 0
+        self.pack = 512
+        self.highEnd = 512
+        self.high = 512
+        self.mid = 512
+        self.low = 512
+        self.lowEnd = 512
 
 groups = []
 #=============================================World==================================================
@@ -17,12 +17,12 @@ groups = []
 texWorld = TextureSettings()
 texWorld.tag = "World"
 texWorld.EnumRemap = "World"
-texWorld.pack = 512
-texWorld.highEnd = 512
+texWorld.pack = 8192
+texWorld.highEnd = 1024
 texWorld.high = 512
 texWorld.mid = 256
 texWorld.low = 128
-texWorld.lowEnd = 128
+texWorld.lowEnd = 8192
 groups.append(texWorld)
 #2
 texWorldNormal = TextureSettings()
@@ -150,15 +150,122 @@ texVehicleSpecular.lowEnd = 256
 groups.append(texVehicleSpecular)
 #=============================================Cinematic==================================================
 #13
+texCinematic = TextureSettings()
+texCinematic.tag = "Cinematic"
+texCinematic.EnumRemap = "UI-Splash"
+texCinematic.pack = 1024
+texCinematic.highEnd = 1024
+texCinematic.high = 1024
+texCinematic.mid = 1024
+texCinematic.low = 512
+texCinematic.lowEnd = 256
+groups.append(texCinematic)
+#=============================================Effects==================================================
+#14
+texEffects = TextureSettings()
+texCinematic.tag = "Effects"
+texCinematic.EnumRemap = "Effects"
+texCinematic.pack = 128
+texCinematic.highEnd = 128
+texCinematic.high = 128
+texCinematic.mid = 128
+texCinematic.low = 64
+texCinematic.lowEnd = 64
+groups.append(texEffects)
+#15
+texEffectsAtlas = TextureSettings()
+texEffectsAtlas.tag = "EffectsNotFiltered"
+texEffectsAtlas.EnumRemap = "EffectsAtlas"
+texEffectsAtlas.pack = 1024
+texEffectsAtlas.highEnd = 1024
+texEffectsAtlas.high = 1024
+texEffectsAtlas.mid = 512
+texEffectsAtlas.low = 256
+texEffectsAtlas.lowEnd = 256
+groups.append(texEffectsAtlas)
+#=============================================Skybox==================================================
+#16
+texSkybox = TextureSettings()
+texSkybox.tag = "Skybox"
+texSkybox.EnumRemap = "Skybox"
+texSkybox.pack = 1024
+texSkybox.highEnd = 1024
+texSkybox.high = 1024
+texSkybox.mid = 512
+texSkybox.low = 512
+texSkybox.lowEnd = 256
+groups.append(texSkybox)
+#=============================================UI==================================================
+#17
+texUI = TextureSettings()
+texUI.tag = "UI"
+texUI.EnumRemap = "UI"
+texUI.pack = 1024
+texUI.highEnd = 1024
+texUI.high = 1024
+texUI.mid = 1024
+texUI.low = 1024                    # No Scale for UI
+texUI.lowEnd = 1024                 # No Scale for UI
+#=============================================Lightmap==================================================
+#17
+texLightmap = TextureSettings()
+texLightmap.tag = "Lightmap"
+texLightmap.EnumRemap = "Lightmap"
+texLightmap.pack = 1024
+texLightmap.highEnd = 1024
+texLightmap.high = 1024
+texLightmap.mid = 1024
+texLightmap.low = 256
+texLightmap.lowEnd = 128
+groups.append(texLightmap)
+#=============================================RenderTarget==================================================
+#19
+texRenderTarget = TextureSettings()
+texRenderTarget.tag = "RenderTarget"
+texRenderTarget.EnumRemap = "RenderTarget"
+texRenderTarget.pack = 32
+texRenderTarget.highEnd = 32
+texRenderTarget.high = 32
+texRenderTarget.mid = 32
+texRenderTarget.low = 32
+texRenderTarget.lowEnd = 32
+groups.append(texRenderTarget)
+#=============================================PropsImportant==================================================
+#20
+texPropsImportant = TextureSettings()
+texPropsImportant.tag = "MobileFlattened"
+texPropsImportant.EnumRemap = "PropsImportant"
+texPropsImportant.pack = 1024
+texPropsImportant.highEnd = 1024
+texPropsImportant.high = 1024
+texPropsImportant.mid = 1024
+texPropsImportant.low = 512
+texPropsImportant.lowEnd = 256
+groups.append(texPropsImportant)
+#=============================================BuildingImportant==================================================
+#21
+texBuildingImportant = TextureSettings()
+texBuildingImportant.tag = "ProcBuilding_Face"
+texBuildingImportant.EnumRemap = "BuildingImportant"
+texBuildingImportant.pack = 8192
+texBuildingImportant.highEnd = 8192
+texBuildingImportant.high = 8192
+texBuildingImportant.mid = 8192
+texBuildingImportant.low = 8192
+texBuildingImportant.lowEnd = 8192
+groups.append(texBuildingImportant)
 
 
-current = os.getcwd()
-current = current.replace("\\","/")
-filePath = current +  "/Texture_Size_Settings/DefaultDeviceProfiles.ini"
+
+
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+filePath = dir_path +  "/DefaultDeviceProfiles.ini"
 
 config = ''
 newLines = []
-
+remapReplaces = []
 
 f = open(filePath,'r')
 lines = f.readlines()
@@ -183,11 +290,38 @@ for line in lines:
                     newLine = line.replace(tokens[7],"MaxLODSize="+str(group.highEnd))
                 elif config.find("Android DeviceProfile") != -1:
                     newLine = line.replace(tokens[7],"MaxLODSize="+str(group.pack))
+                    remapReplaces.append("TEXTUREGROUP_" + group.tag + ".DisplayName"+"="+group.EnumRemap + "_" + str(group.pack) + "\n")
                 break   
     newLines.append(newLine)
 f.close()
 
-fout = open("out.txt","wt")
+fout = open(filePath,"wt")
 for line in newLines:
     fout.write(line)
 fout.close()
+
+
+#====================================Update DefaultEngine.ini===============================================
+filePath = dir_path +  "/DefaultEngine.ini"
+f = open(filePath,'r')
+lines = f.readlines()
+newLines = []
+
+for line in lines:
+    newLine = line
+    if line.startswith("TEXTUREGROUP_"):
+        for lineRemap in remapReplaces:
+            lineStart = lineRemap.split("=")[0]
+            if(line.startswith(lineStart)):
+                newLine = lineRemap
+                break
+    newLines.append(newLine)
+
+
+fout = open(filePath,"wt")
+for line in newLines:
+    fout.write(line)
+fout.close()
+           
+
+
