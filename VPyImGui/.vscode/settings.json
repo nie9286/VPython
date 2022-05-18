@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": "../../3.8/python.exe",
+    "python.autoComplete.extraPaths": [
+    
+    ],
+    "python.analysis.extraPaths": []
+}
