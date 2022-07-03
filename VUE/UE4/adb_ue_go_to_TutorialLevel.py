@@ -17,7 +17,7 @@ def shellcmd(device_id,command):
 devices = get_devices()
 for device in devices:
     print(device)
-    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'r.MaterialQualityLevel 0'")
+    shellcmd(device,"am broadcast -a android.intent.action.RUN -e cmd 'SolarGM_GoTutorialLevel TutorialLevel_02 2'")
 
 
 
